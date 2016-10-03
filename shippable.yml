@@ -1,0 +1,6 @@
+ # language setting
+language: java
+  # jdk tag
+jdk:
+ - openjdk7
+ 
