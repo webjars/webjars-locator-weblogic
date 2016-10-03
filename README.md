@@ -1,6 +1,4 @@
-# webjars-locator-weblogic 
-
-Build status ![Image of Yaktocat](https://api.shippable.com/projects/57f2bb6a75a4470f00e6a41f/badge?branch=master)
+# webjars-locator-weblogic ![](https://api.shippable.com/projects/57f2bb6a75a4470f00e6a41f/badge?branch=master)
 
 Helper library to be able to use the webjars-locator library ins weblogic (https://github.com/webjars/webjars-locator)
 
