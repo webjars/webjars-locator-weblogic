@@ -6,8 +6,7 @@ Helper library to be able to use the webjars-locator library ins weblogic (https
 
 Just include webjars-locator-weblogic as a dependency and everything will work as expected!
 
-Maven
-
+**Maven**
 ```xml
 <dependency>
     <groupId>se.r2m</groupId>
@@ -17,8 +16,7 @@ Maven
 ```
 
 
-Gradle
-
+**Gradle**
 ```gradle
 dependencies {
     compile 'se.r2m:webjars-locator-weblogic:0.9'
