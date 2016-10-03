@@ -1,4 +1,4 @@
-package se.atg.org.webjars.urlprotocols;
+package se.r2m.org.webjars.urlprotocols;
 
 import java.io.File;
 import java.io.FileInputStream;
