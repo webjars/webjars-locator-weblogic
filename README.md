@@ -2,6 +2,8 @@
 
 Helper library to be able to use the webjars-locator library ins weblogic (https://github.com/webjars/webjars-locator)
 
+This dependency is needed if your are using Weblogic 12C, other versions of Weblogic might also be affected.
+
 ## Usage
 
 Just include webjars-locator-weblogic as a dependency and everything will work as expected!
