@@ -1,4 +1,4 @@
-# webjars-locator-weblogic ![](https://api.shippable.com/projects/57f2bb6a75a4470f00e6a41f/badge?branch=master)
+# webjars-locator-weblogic [![Run Status](https://api.shippable.com/projects/57f2bb6a75a4470f00e6a41f/badge?branch=master)](https://app.shippable.com/projects/57f2bb6a75a4470f00e6a41f)
 
 Helper library to be able to use the webjars-locator library in weblogic (https://github.com/webjars/webjars-locator)
 
