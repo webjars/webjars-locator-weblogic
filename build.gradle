@@ -1,11 +1,14 @@
 plugins {
   id 'java'
-  id 'com.jfrog.bintray' version '1.7'
+  id 'com.jfrog.bintray' version '1.7.2'
 }
 
 repositories {
     jcenter()
 }
+
+apply plugin: 'maven-publish'
+apply plugin: 'java'
 
 group = 'org.webjars'
 version = '0.9'
@@ -14,15 +17,25 @@ sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 dependencies {
-    compile 'org.slf4j:slf4j-api:1.7.21'
     compile 'org.webjars:webjars-locator:0.32'
     testCompile 'junit:junit:4.12'
+}
+
+task sourceJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allJava
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
 }
 
 bintray {
     user = property('bintrayUser')
     key = property('bintrayApiKey')
     publish = true
+    publications = ['MyPublication']
     pkg {
         userOrg = 'webjars'
         repo = 'maven'
@@ -34,11 +47,56 @@ bintray {
         version {
             gpg {
                 sign = true
+                passphrase = property('signing.password')
             }
             mavenCentralSync {
                 sync = true
                 user = property('nexusUsername')
                 password = property('nexusPassword')
+            }
+        }
+    }
+}
+
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+
+            pom.withXml {
+                asNode().children().last() + {
+                    resolveStrategy = Closure.DELEGATE_FIRST
+                    name bintray.pkg.name
+                    description 'webjars-locator plugin for WebLogic'
+                    url 'https://github.com/webjars/webjars-locator-weblogic'
+                    scm {
+                        url bintray.pkg.vcsUrl
+                        connection bintray.pkg.vcsUrl
+                        developerConnection bintray.pkg.vcsUrl
+                    }
+                    licenses {
+                        license {
+                            name 'MIT'
+                            url 'https://opensource.org/licenses/MIT'
+                            distribution 'repo'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id 'jamesward'
+                            name 'James Ward'
+                            email 'james@jamesward.com'
+                        }
+                    }
+                }
+            }
+
+            artifact sourceJar {
+                classifier "sources"
+            }
+
+            artifact javadocJar {
+                classifier "javadoc"
             }
         }
     }
