@@ -1,4 +1,4 @@
-package se.r2m.org.webjars.urlprotocols;
+package org.webjars.urlprotocols;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,7 +17,6 @@ import java.util.jar.JarInputStream;
 import java.util.regex.Pattern;
 
 import org.webjars.CloseQuietly;
-import org.webjars.urlprotocols.UrlProtocolHandler;
 
 public class WeblogicJarUrlProtocolHandler implements UrlProtocolHandler {
 
@@ -48,7 +47,7 @@ public class WeblogicJarUrlProtocolHandler implements UrlProtocolHandler {
             }
 
             JarEntry jarEntry = jarInputStream.getNextJarEntry();
-            while (jarEntry !=null) {
+            while (jarEntry != null) {
                 String assetPathCandidate = jarEntry.getName();
                 if (!jarEntry.isDirectory() && filterExpr.matcher(assetPathCandidate).matches()) {
                     assetPaths.add(assetPathCandidate);

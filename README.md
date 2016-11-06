@@ -1,4 +1,4 @@
-# webjars-locator-weblogic [![Run Status](https://api.shippable.com/projects/57f2bb6a75a4470f00e6a41f/badge?branch=master)](https://app.shippable.com/projects/57f2bb6a75a4470f00e6a41f)
+# webjars-locator-weblogic
 
 Helper library to be able to use the webjars-locator library in weblogic (https://github.com/webjars/webjars-locator)
 
@@ -11,7 +11,7 @@ Just include webjars-locator-weblogic as a dependency and everything will work a
 **Maven**
 ```xml
 <dependency>
-    <groupId>se.r2m</groupId>
+    <groupId>org.webjars</groupId>
     <artifactId>webjars-locator-weblogic</artifactId>
     <version>0.9</version>
 </dependency>
@@ -21,7 +21,7 @@ Just include webjars-locator-weblogic as a dependency and everything will work a
 **Gradle**
 ```gradle
 dependencies {
-    compile 'se.r2m:webjars-locator-weblogic:0.9'
+    compile 'org.webjars:webjars-locator-weblogic:0.9'
 }
 
 ```

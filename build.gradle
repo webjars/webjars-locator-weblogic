@@ -1,12 +1,13 @@
 plugins {
   id 'java'
+  id 'com.jfrog.bintray' version '1.7'
 }
 
 repositories {
     jcenter()
 }
 
-group = 'se.r2m'
+group = 'org.webjars'
 version = '0.9'
 
 sourceCompatibility = 1.7
@@ -16,4 +17,29 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.21'
     compile 'org.webjars:webjars-locator:0.32'
     testCompile 'junit:junit:4.12'
+}
+
+bintray {
+    user = property('bintrayUser')
+    key = property('bintrayApiKey')
+    publish = true
+    pkg {
+        userOrg = 'webjars'
+        repo = 'maven'
+        name = 'webjars-locator-weblogic'
+        licenses = ['MIT']
+        issueTrackerUrl = 'https://github.com/webjars/webjars-locator-weblogic/issues'
+        vcsUrl = 'https://github.com/webjars/webjars-locator-weblogic.git'
+        githubRepo = 'webjars/webjars-locator-weblogic'
+        version {
+            gpg {
+                sign = true
+            }
+            mavenCentralSync {
+                sync = true
+                user = property('nexusUsername')
+                password = property('nexusPassword')
+            }
+        }
+    }
 }
