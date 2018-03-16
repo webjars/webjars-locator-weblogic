@@ -1,5 +1,6 @@
 package org.webjars.urlprotocols;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -16,9 +17,12 @@ import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
 import java.util.regex.Pattern;
 
-import org.webjars.CloseQuietly;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class WeblogicJarUrlProtocolHandler implements UrlProtocolHandler {
+
+    private static final Logger log = LoggerFactory.getLogger(WeblogicJarUrlProtocolHandler.class);
 
     @Override
     public boolean accepts(String protocol) {
@@ -57,8 +61,8 @@ public class WeblogicJarUrlProtocolHandler implements UrlProtocolHandler {
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
-            CloseQuietly.closeQuietly(jarFile);
-            CloseQuietly.closeQuietly(jarInputStream);
+            closeQuietly(jarFile);
+            closeQuietly(jarInputStream);
         }
 
         return assetPaths;
@@ -87,5 +91,15 @@ public class WeblogicJarUrlProtocolHandler implements UrlProtocolHandler {
     private boolean isArchive(String path) {
         Path candidate = Paths.get(URI.create(path));
         return Files.isReadable(candidate) && Files.isRegularFile(candidate);
+    }
+
+    private static void closeQuietly(Closeable closeable) {
+        if (closeable != null) {
+            try {
+                closeable.close();
+            } catch (IOException e) {
+                log.debug("Exception while closing resource", e);
+            }
+        }
     }
 }

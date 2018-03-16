@@ -11,13 +11,13 @@ apply plugin: 'maven-publish'
 apply plugin: 'java'
 
 group = 'org.webjars'
-version = '0.9'
+version = '0.10-SNAPSHOT'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 dependencies {
-    compile 'org.webjars:webjars-locator:0.32'
+    compile 'org.webjars:webjars-locator-core:0.35'
     testCompile 'junit:junit:4.12'
 }
 
