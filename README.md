@@ -13,7 +13,7 @@ Just include webjars-locator-weblogic as a dependency and everything will work a
 <dependency>
     <groupId>org.webjars</groupId>
     <artifactId>webjars-locator-weblogic</artifactId>
-    <version>0.9</version>
+    <version>0.10</version>
 </dependency>
 ```
 
@@ -21,7 +21,7 @@ Just include webjars-locator-weblogic as a dependency and everything will work a
 **Gradle**
 ```gradle
 dependencies {
-    compile 'org.webjars:webjars-locator-weblogic:0.9'
+    compile 'org.webjars:webjars-locator-weblogic:0.10'
 }
 
 ```

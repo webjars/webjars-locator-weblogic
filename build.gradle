@@ -11,7 +11,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'java'
 
 group = 'org.webjars'
-version = '0.10-SNAPSHOT'
+version = '0.10'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
